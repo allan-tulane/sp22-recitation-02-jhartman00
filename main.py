@@ -60,7 +60,6 @@ def work_calc(n, a, b, f):
 def test_work():
   """ done. """
   print(work_calc(10, 2, 2,lambda n: 1))
-  print(span_calc(10, 2, 2,lambda n: 1))
   assert work_calc(20, 1, 2, lambda n: n*n) == 530
   assert work_calc(30, 3, 2, lambda n: n) == 300
   assert work_calc(20, 2, 2,lambda n: 1) == 31

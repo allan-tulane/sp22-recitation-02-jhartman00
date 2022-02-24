@@ -3,9 +3,8 @@ CMPS 2200  Recitation 2
 """
 
 ### the only imports needed are here
-import tabulate
-import time
-import math
+#import tabulate
+#import time
 ###
 
 def simple_work_calc(n, a, b):
@@ -61,10 +60,12 @@ def work_calc(n, a, b, f):
 def test_work():
   """ done. """
   print(work_calc(10, 2, 2,lambda n: 1))
-  assert work_calc(20, 1, 2, lambda n: math.log10(n)) == 530
+  print(work_calc(10, 2, 2,lambda n: n*n))
+  print(work_calc(10, 2, 2,lambda n: n))
+  assert work_calc(20, 1, 2, lambda n: n*n) == 530
   assert work_calc(30, 3, 2, lambda n: n) == 300
   assert work_calc(20, 2, 2,lambda n: 1) == 31
-  assert work_calc(30, 2, 2, lambda n: math.log10(n)) == 1634
+  assert work_calc(30, 2, 2, lambda n: n*n) == 1634
   assert work_calc(40, 2, 2, lambda n: n) == 224
 
 def span_calc(n, a, b, f):
@@ -172,7 +173,7 @@ def test_compare_span():
 
 if __name__ == "__main__":
   # test_simple_work()
-  # test_work()
+  test_work()
   
   # print("Work ^")
   # test_compare_span()

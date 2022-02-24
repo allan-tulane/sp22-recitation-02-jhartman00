@@ -1,4 +1,4 @@
- # CMPS 2200  Recitation 02
+6 # CMPS 2200  Recitation 02
 
 **Name (Team Member 1): **Jamie hartman  
 **Name (Team Member 2): **Charles Tyndal
@@ -46,8 +46,15 @@ where $W(1) = 1$.
 
 - [ ] 3. (2 point) Now implement `work_calc`, which generalizes the above so that we can now input $a$, $b$ and a *function* $f(n)$ as arguments. Test this code by completing the test cases in `test_work` and adding 3 more cases.
 
-- [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
-
+- [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \n*n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
+  - when f(n) == 1 the work is O(1) 
+  - when f(n) == n^2 the work is O(n^2)
+  - when f(n) == n the work is O(n*log(n))
+  - when inputing n == 10, a=2, b=2 the values came out as such
+    - when f(n) == 1, W(n) == 15
+    - when f(n) == n^2, W(n) == 174
+    - when f(n) == n, W(n) == 36
+  - This corresponds to what we expected out of out big O notation calculations.
 **TODO: your answer goes here**
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 

@@ -3,8 +3,8 @@ CMPS 2200  Recitation 2
 """
 
 ### the only imports needed are here
-#import tabulate
-#import time
+import tabulate
+import time
 ###
 
 def simple_work_calc(n, a, b):
@@ -59,9 +59,9 @@ def work_calc(n, a, b, f):
 
 def test_work():
   """ done. """
-  print(work_calc(10, 2, 2,lambda n: 1))
-  print(work_calc(10, 2, 2,lambda n: n*n))
-  print(work_calc(10, 2, 2,lambda n: n))
+  assert work_calc(10, 2, 2,lambda n: 1) == 15
+  assert work_calc(10, 2, 2,lambda n: n*n) == 174
+  assert work_calc(10, 2, 2,lambda n: n) == 36
   assert work_calc(20, 1, 2, lambda n: n*n) == 530
   assert work_calc(30, 3, 2, lambda n: n) == 300
   assert work_calc(20, 2, 2,lambda n: 1) == 31
@@ -153,16 +153,13 @@ def test_compare_span():
   Implement `test_compare_span` to create a new comparison function for comparing span functions. 
   Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. 
   Confirm that everything matches up as it should. 
-
-
-  Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
   """
   
   def span_fn1(n):
     return n**2
     
   def span_fn2(n):
-    return n**3
+    return n
 
   fn1_span = span_calc(10, 2, 2, span_fn1)
   fn2_span = span_calc(10, 2, 2, span_fn2)
@@ -172,13 +169,13 @@ def test_compare_span():
 
 
 if __name__ == "__main__":
-  # test_simple_work()
+  test_simple_work()
   test_work()
   
   # print("Work ^")
-  # test_compare_span()
+  test_compare_span()
   # print("Span ^")
-  print("Question 5:\n")
-  test_compare_work()
+  #print("Question 5:\n")
+  #test_compare_work()
   
   

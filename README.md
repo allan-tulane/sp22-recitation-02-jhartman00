@@ -55,7 +55,7 @@ where $W(1) = 1$.
     - when f(n) == n^2, W(n) == 174
     - when f(n) == n, W(n) == 36
   - This corresponds to what we expected out of out big O notation calculations.
-**TODO: your answer goes here**
+
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
@@ -73,6 +73,10 @@ I created this table bellow by using the compare work function.  The values for 
 
 
 
-- [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
+- [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should.
+  - For span the value a has no influence on the output as it does not apply to the equation. When using compare span to compare values I found that when n == 10, a == 2, and b == 2
+    - when f(n) == n^2, S(n) == 130
+    - when f(n) == n, S(n) == 18
+  - This alligns with what we had found for the big O of work, as they would have the same big O as work since the only difference is each equation being multiplied by a constant, a.
 
 **TODO: your answer goes here**

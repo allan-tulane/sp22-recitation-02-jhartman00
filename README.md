@@ -52,7 +52,19 @@ where $W(1) = 1$.
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
-**TODO: your answer goes here**
+I created this table bellow by using the compare work function.  The values for a and b were 2 and 2. I used two different functions as my f(n), one returned n^1 and one that return n^3.
+
+|     n |   c > log_b a |   c < log_b a |
+|-------|---------------|---------------|
+|    10 |          1290 |            36 |
+|    20 |         10580 |            92 |
+|    50 |        165354 |           276 |
+|   100 |       1330708 |           652 |
+|  1000 |    1333158888 |          9120 |
+|  5000 |  166663230888 |         61728 |
+| 10000 | 1333326461776 |        133456 |  
+
+
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 

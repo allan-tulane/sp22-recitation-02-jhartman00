@@ -5,6 +5,7 @@ CMPS 2200  Recitation 2
 ### the only imports needed are here
 import tabulate
 import time
+import math
 ###
 
 def simple_work_calc(n, a, b):
@@ -60,10 +61,10 @@ def work_calc(n, a, b, f):
 def test_work():
   """ done. """
   print(work_calc(10, 2, 2,lambda n: 1))
-  assert work_calc(20, 1, 2, lambda n: n*n) == 530
+  assert work_calc(20, 1, 2, lambda n: math.log10(n)) == 530
   assert work_calc(30, 3, 2, lambda n: n) == 300
   assert work_calc(20, 2, 2,lambda n: 1) == 31
-  assert work_calc(30, 2, 2, lambda n: n*n) == 1634
+  assert work_calc(30, 2, 2, lambda n: math.log10(n)) == 1634
   assert work_calc(40, 2, 2, lambda n: n) == 224
 
 def span_calc(n, a, b, f):
@@ -86,25 +87,35 @@ def span_calc(n, a, b, f):
     return 0
   return span_calc(n//b, a, b, f) + f(n)
 
-def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
-	"""
-	Compare the values of different recurrences for 
-	given input sizes.
 
-	Returns:
-	A list of tuples of the form
-	(n, work_fn1(n), work_fn2(n), ...)
-	
-	"""
-	result = []
-	for n in sizes:
-		# compute W(n) using current a, b, f
-		result.append((
-			n,
-			work_fn1(n),
-			work_fn2(n)
-			))
-	return result
+def q5_work_a(n):
+    return n**3
+
+def q5_work_b(n):
+    return n**1
+
+def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
+  """
+  Compare the values of different recurrences for 
+  given input sizes.
+  
+  Returns:
+  A list of tuples of the form
+  (n, work_fn1(n), work_fn2(n), ...)
+  
+  """
+  
+  
+  
+  result = []
+  for n in sizes:
+    # compute W(n) using current a, b, f
+    result.append((
+      n,
+      work_calc(n, 2, 2, work_fn1),
+      work_calc(n, 2, 2, work_fn2)
+      ))
+  return result
 
 
 
@@ -128,6 +139,10 @@ def test_compare_work():
   def work_fn2(n):
     return n**3
 
+
+  
+    
+
   results = compare_work(work_fn1, work_fn2)
   print_results(results)
 
@@ -137,6 +152,9 @@ def test_compare_span():
   Implement `test_compare_span` to create a new comparison function for comparing span functions. 
   Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. 
   Confirm that everything matches up as it should. 
+
+
+  Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
   """
   
   def span_fn1(n):
@@ -151,10 +169,15 @@ def test_compare_span():
   print("fn2_span: %d \n" % fn2_span)
 
 
+
 if __name__ == "__main__":
   # test_simple_work()
   # test_work()
+  
+  # print("Work ^")
+  # test_compare_span()
+  # print("Span ^")
+  print("Question 5:\n")
   test_compare_work()
-  print("Work ^")
-  test_compare_span()
-  print("Span ^")
+  
+  
